@@ -25,4 +25,16 @@ class C_Minimarket extends CI_Controller
 		$this->load->view('Dashboard/V_index');
 		$this->load->view('Template/V_Footer');
 	}
+
+	public function terimaDataMinimarket()
+	{
+		$database['nama_jualan'] = $this->input->post('nama_jualan');
+		$database['kategori_jualan'] = $this->input->post('nama_jualan');
+		$database['harga_jualan'] = $this->input->post('nama_jualan');
+
+		$this->load->model('M_Minimarket');
+		$this->M_Minimarket->simpanDataMinimarket();
+
+		// $database['nama_jualan'] = $this->input->post('nama_jualana');s
+	}
 }
