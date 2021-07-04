@@ -18,7 +18,7 @@
                         <td><?= $minimarket->kategori_jualan ?></td>
                         <td><?= $minimarket->harga_jualan ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('C_Minimarket/updateDataMinimarket/') . $minimarket->id_jualan ?>" class="btn btn-primary">Ubah</a>
+                            <a href="<?= base_url('C_Minimarket/form_edit/') . $minimarket->id_jualan ?>" class="btn btn-primary">Ubah</a>
                             <a href="<?= base_url('C_Minimarket/hapusMinimarket/') . $minimarket->id_jualan ?>" class="btn btn-danger">hapus</a>
                         </td>
                     </tr>

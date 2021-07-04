@@ -55,6 +55,16 @@ class C_Minimarket extends CI_Controller
 		$this->load->view('template/V_Footer');
 	}
 
+	public function form_edit()
+	{
+		$id_jualan = $this->uri->segment(3);
+		$data['minimarket'] = $this->M_Minimarket->getDataMinimarketDetail($id_jualan);
+
+		$this->load->view('Template/V_Header', $data);
+		$this->load->view('Show/Edit_barang');
+		$this->load->view('Template/V_Footer');
+	}
+
 	public function updateDataMinimarket()
 	{
 		$id = $this->input->post('id_jualan');
@@ -62,8 +72,8 @@ class C_Minimarket extends CI_Controller
 		$database['kategori_jualan'] = $this->input->post('kategori_jualan');
 		$database['harga_jualan'] = $this->input->post('harga_jualan');
 
-
 		$this->M_Minimarket->updateMinimarket($database, $id);
-		// redirect(base_url('C_Minimarket/showDataMinimarket'));
+
+		redirect(base_url('C_Minimarket/detailDataMinimarket') . '/' . $id);
 	}
 }
