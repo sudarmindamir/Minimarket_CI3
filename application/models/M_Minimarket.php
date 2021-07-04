@@ -19,4 +19,10 @@ class M_Minimarket extends CI_Model
     {
         return $this->db->get_where('daftarjualan_tb', array('id_jualan' => $id_jualan))->row();
     }
+
+    public function updateMinimarket($data, $id)
+    {
+        $this->db->where('id_jualan', $id);
+        $this->db->update('daftarjualan_tb', $data);
+    }
 }
