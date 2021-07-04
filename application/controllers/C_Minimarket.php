@@ -3,22 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class C_Minimarket extends CI_Controller
 {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('M_Minimarket');
+	}
 	public function index()
 	{
 		$this->load->view('Template/V_Header');
@@ -29,12 +18,40 @@ class C_Minimarket extends CI_Controller
 	public function terimaDataMinimarket()
 	{
 		$database['nama_jualan'] = $this->input->post('nama_jualan');
-		$database['kategori_jualan'] = $this->input->post('nama_jualan');
-		$database['harga_jualan'] = $this->input->post('nama_jualan');
+		$database['kategori_jualan'] = $this->input->post('kategori_jualan');
+		$database['harga_jualan'] = $this->input->post('harga_jualan');
 
 		$this->load->model('M_Minimarket');
-		$this->M_Minimarket->simpanDataMinimarket();
+		$this->M_Minimarket->simpanDataMinimarket($database);
 
+		redirect(base_url('C_Minimarket/showDataMinimarket'));
 		// $database['nama_jualan'] = $this->input->post('nama_jualana');s
+	}
+
+	public function showDataMinimarket()
+	{
+		$data['minimarket'] = $this->M_Minimarket->showDataMinimarket();
+
+		// $this->load->model('M_Minimarket');
+		// $this->M_Minimarket->showDataMinimarket($data);
+		// $database['nama_jualan'] = $this->input->post('nama_jualana');
+
+		$this->load->view('template/V_Header');
+		$this->load->view('Show/V_Minimarket', $data);
+		$this->load->view('template/V_Footer');
+	}
+
+	public function detailDataMinimarket()
+	{
+		$id_jualan = $this->uri->segment(3);
+		$data['minimarket'] = $this->M_Minimarket->getDataMinimarketDetail($id_jualan);
+
+		// $this->load->model('M_Minimarket');
+		// $this->M_Minimarket->showDataMinimarket($data);
+		// $database['nama_jualan'] = $this->input->post('nama_jualana');
+
+		$this->load->view('template/V_Header');
+		$this->load->view('Show/V_DetailMinimarket', $data);
+		$this->load->view('template/V_Footer');
 	}
 }

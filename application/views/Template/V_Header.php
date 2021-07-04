@@ -41,9 +41,21 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('C_Minimarket'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Input Barang</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('C_Minimarket/showDataMinimarket'); ?>">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Daftar Barang</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('C_Minimarket/detailDataMinimarket'); ?>">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Detail Barang</span></a>
             </li>
 
 
